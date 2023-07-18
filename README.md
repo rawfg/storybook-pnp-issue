@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When setting yarn PnP `cacheFolder` to a different drive than `C` Storybook crashes. There is a broken path containing both `C` and `D` drives: `C:\Users\rawf\projects\storybook-pnp-issues\D:\yarn\@storybook-manager-npm-7.0.26-ce3e1a67d5-4912726b5d.`
 
-## Available Scripts
+```
+yarn storybook
+@storybook/cli v7.0.26
 
-In the project directory, you can run:
+ERR! Error: Failed to load static files, no such directory: C:\Users\rawf\projects\storybook-pnp-issues\D:\yarn\@storybook-manager-npm-7.0.26-ce3e1a67d5-4912726b5d.zip\node_modules\@storybook\manager\static
+ERR! Make sure this directory exists, or omit the -s (--static-dir) option.
+ERR!     at parseStaticDir (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:1:2914)
+ERR!     at <anonymous> (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:4:842)
+ERR!     at async Promise.all (index 0)
+ERR!     at Object.favicon2 (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:4:604)
+ERR!     at async useStatics (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:11:6846)
+ERR!     at async Promise.all (index 2)
+ERR!     at async storybookDevServer (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:46:6177)
+ERR!     at async buildDevStandalone (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:59:2786)
+ERR!     at async withTelemetry (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:46:3620)
+ERR!     at async dev (D:\yarn\@storybook-cli-npm-7.0.26-681f8ca0fa-94dc69a519.zip\node_modules\@storybook\cli\dist\generate.js:440:401)
+ERR!  Error: Failed to load static files, no such directory: C:\Users\rawf\projects\storybook-pnp-issues\D:\yarn\@storybook-manager-npm-7.0.26-ce3e1a67d5-4912726b5d.zip\node_modules\@storybook\manager\static
+ERR! Make sure this directory exists, or omit the -s (--static-dir) option.
+ERR!     at parseStaticDir (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:1:2914)
+ERR!     at <anonymous> (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:4:842)
+ERR!     at async Promise.all (index 0)
+ERR!     at Object.favicon2 (d:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\presets\common-preset.js:4:604)
+ERR!     at async useStatics (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:11:6846)
+ERR!     at async Promise.all (index 2)
+ERR!     at async storybookDevServer (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:46:6177)
+ERR!     at async buildDevStandalone (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:59:2786)
+ERR!     at async withTelemetry (D:\yarn\@storybook-core-server-npm-7.0.26-0589c8b6a6-5fea5e8ae2.zip\node_modules\@storybook\core-server\dist\index.js:46:3620)
+ERR!     at async dev (D:\yarn\@storybook-cli-npm-7.0.26-681f8ca0fa-94dc69a519.zip\node_modules\@storybook\cli\dist\generate.js:440:401)
+```
 
-### `npm start`
+## Sample project setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Sample project is based on `create-react-app` with the TypeScript template enabled. Storybook installed using [documentation](https://storybook.js.org/docs/7.0/react/get-started/install) `npx storybook@latest init`.
+The `cacheFolder` set to `D:\\yarn` in the `.yarnrc.yml` file.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Versions
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Windows 11 Pro 64-bit
+NodeJs v18.16.0
+npm 9.5.1
+yarn 3.6.1
+```
